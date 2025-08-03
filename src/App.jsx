@@ -31,9 +31,23 @@ function App() {
           <p>Item Price : {item.price}</p>
           <p>Discount Price : {item.discountPercentage}</p>
           <p>Rating : {item.rating}</p>
-          <p>WArranty : {item.warrantyInformation}</p>
-          <p>Reviews : {item.comment}</p>
-          
+          <p>WArranty : {item.warrantyInformation}</p> 
+          {item.reviews && item.reviews.length > 0 ? (
+              <div>
+                <p><strong>Reviews:</strong></p>
+                {item.reviews.map((review, index) => (
+                  <div key={index} >
+                    <p>⭐ Rating: {review.rating}</p>
+                    <p>🗣️ Comment: {review.comment}</p>
+                    <p>👤 Reviewer: {review.reviewerName}</p>
+                    <p>📧 Email: {review.reviewerEmail}</p>
+                    <hr />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>No reviews available.</p>
+            )}         
         </div>
         ))}
       </div>
